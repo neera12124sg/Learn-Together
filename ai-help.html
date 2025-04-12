@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ask AI | LearnTogether</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="page1.html" class="back-button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Back
+  </a>
+
+  <div class="question-container">
+    <h1>Ask Your Doubt</h1>
+    
+    <div class="question-box">
+      <input type="text" id="customQuestion" placeholder="Type your question...">
+      <button onclick="submitQuestion()">Submit</button>
+    </div>
+    
+    <div id="answerContainer" class="answer-container"></div>
+  </div>
+
+  <script>
+    const qaDatabase = {
+      // Maths Questions
+      "What is the Pythagorean theorem?": "In a right triangle, the square of the hypotenuse equals the sum of squares of the other two sides (a² + b² = c²).",
+      "How to solve quadratic equations?": "Use the quadratic formula: x = [-b ± √(b²-4ac)]/2a",
+      "What is the derivative of x²?": "The derivative of x² is 2x.",
+      "How to calculate area of a circle?": "Area = πr² where r is the radius.",
+      "What is the value of pi?": "Pi is approximately 3.14159.",
+
+      // Chemistry Questions
+      "What is the atomic number of oxygen?": "The atomic number of oxygen is 8.",
+      "How to balance chemical equations?": "Ensure the same number of each atom on both sides of the equation.",
+      "What is Avogadro's number?": "6.022 × 10²³ particles per mole.",
+      "What is the pH of pure water?": "The pH of pure water is 7 (neutral).",
+      "What are the states of matter?": "Solid, liquid, gas, and plasma.",
+
+      // Physics Questions
+      "What is Newton's first law?": "An object in motion stays in motion unless acted upon by an external force.",
+      "How to calculate force?": "Force = mass × acceleration (F=ma).",
+      "What is the speed of light?": "Approximately 299,792 kilometers per second.",
+      "What is Ohm's Law?": "V = IR (Voltage = Current × Resistance).",
+      "What is kinetic energy formula?": "KE = ½mv² (mass × velocity squared divided by 2)."
+    };
+
+    function submitQuestion() {
+      const customQuestion = document.getElementById('customQuestion').value;
+      const answerContainer = document.getElementById('answerContainer');
+
+      if (qaDatabase[customQuestion]) {
+        answerContainer.innerHTML = `
+          <h3>Question:</h3>
+          <p>${customQuestion}</p>
+          <h3>Answer:</h3>
+          <p>${qaDatabase[customQuestion]}</p>
+        `;
+      } else {
+        answerContainer.innerHTML = `
+          <h3>Your Question:</h3>
+          <p>${customQuestion}</p>
+          <p>Our AI is processing your question. Please check back later for the answer.</p>
+        `;
+      }
+      document.getElementById('customQuestion').value = '';
+    }
+  </script>
+</body>
+</html>

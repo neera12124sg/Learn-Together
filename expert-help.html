@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expert Help | LearnTogether</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: url('https://illustrations.popsy.co/amber/student-sitting-at-desk.svg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      filter: blur(8px) brightness(0.8);
+      z-index: -1;
+    }
+    .form-container, .response-container {
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(2px);
+    }
+    .form-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      text-align: center;
+    }
+    .response-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+    .response-container h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    #expert-response {
+      padding: 1rem;
+      background: var(--light-color);
+      border-radius: var(--border-radius);
+    }
+    .ask-expert-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      font-weight: bold;
+      margin-top: 1rem;
+      transition: background-color 0.3s;
+    }
+    .ask-expert-btn:hover {
+      background-color: var(--primary-dark);
+    }
+  </style>
+</head>
+<body>
+  <a href="page1.html" class="back-button" style="
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+  ">
+    <i class="fas fa-arrow-left"></i>
+    Back to Dashboard
+  </a>
+
+  <div class="form-container">
+    <h1>Submit Your Question to an Expert</h1>
+    <p>Click the button below to open the expert question form in a new tab.</p>
+    
+    <!-- Button that opens form in new tab -->
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeYGuJc65wN6PwWT-6c5T3f7_hfr06EyaGxNMfVinEqE98-CQ/viewform" 
+       class="ask-expert-btn" 
+       target="_blank"
+       id="expert-form-link">
+       Ask an Expert
+    </a>
+    <button onclick="closeFormTab()" class="close-form-btn" style="display:none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Close Form
+    </button>
+  </div>
+  
+  <div class="response-container">
+    <h2>Expert Response</h2>
+    <p id="expert-response">The expert's response will appear here after submission.</p>
+  </div>
+  <script>
+    document.getElementById('expert-form-link').addEventListener('click', function() {
+      setTimeout(() => {
+        document.querySelector('.close-form-btn').style.display = 'inline-flex';
+      }, 1000);
+    });
+
+    function closeFormTab() {
+      // This will attempt to close the form tab
+      // Note: May not work due to browser security restrictions
+      try {
+        window.open('', '_blank').close();
+      } catch(e) {
+        alert('Please manually close the form tab');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Whiteboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    .toolbar {
+      background: #2e3a4d;
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+    }
+    .tool-btn {
+      background: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #whiteboard {
+      border: 1px solid #ccc;
+      cursor: crosshair;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button class="tool-btn" id="backBtn" title="Back to Home" onclick="window.location.href='home.html'">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <button class="tool-btn" id="penTool" title="Pen">
+      <i class="fas fa-pen"></i>
+    </button>
+    <button class="tool-btn" id="eraserTool" title="Eraser">
+      <i class="fas fa-eraser"></i>
+    </button>
+    <input type="color" id="colorPicker" value="#000000">
+    <button class="tool-btn" id="clearBtn" title="Clear">
+      <i class="fas fa-trash"></i>
+    </button>
+  </div>
+  <canvas id="whiteboard" width="900" height="500"></canvas>
+
+  <script>
+    const canvas = document.getElementById('whiteboard');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+    let currentTool = 'pen';
+    let currentColor = '#000000';
+    let lineWidth = 3;
+
+    // Set initial canvas style
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = currentColor;
+    ctx.lineWidth = lineWidth;
+    ctx.lineCap = 'round';
+
+    // Drawing functions
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+
+    function startDrawing(e) {
+      isDrawing = true;
+      draw(e);
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      
+      ctx.strokeStyle = currentColor;
+      ctx.lineWidth = lineWidth;
+      
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+    }
+
+    function stopDrawing() {
+      isDrawing = false;
+      ctx.beginPath();
+    }
+
+    // Tool controls
+    document.getElementById('penTool').addEventListener('click', () => {
+      currentTool = 'pen';
+      lineWidth = 3;
+    });
+
+    document.getElementById('eraserTool').addEventListener('click', () => {
+      currentTool = 'eraser';
+      currentColor = 'white';
+      lineWidth = 10;
+    });
+
+    document.getElementById('colorPicker').addEventListener('input', (e) => {
+      currentColor = e.target.value;
+      if (currentTool === 'pen') {
+        ctx.strokeStyle = currentColor;
+      }
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    });
+  </script>
+</body>
+</html>

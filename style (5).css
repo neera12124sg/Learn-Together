@@ -1,0 +1,249 @@
+/* Base Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+/* Enhanced Streak Styles */
+.streak-section {
+  background: linear-gradient(135deg, #4a6bff 0%, #3a5bef 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(74, 107, 255, 0.3);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 8px 24px rgba(74, 107, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(74, 107, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 8px 24px rgba(74, 107, 255, 0.3);
+  }
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  min-width: 180px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+}
+
+.streak-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.streak-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+  background: linear-gradient(to right, #ffffff, #e0e9ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-description {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Back Button */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4a6bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Close Form Button */
+.close-form-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.close-form-btn:hover {
+  background-color: #d32f2f;
+}
+
+.close-form-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Decorations */
+.decoration {
+  position: fixed;
+  font-size: 10rem;
+  opacity: 0.05;
+  z-index: -1;
+}
+
+.decoration-1 {
+  top: -50px;
+  left: -50px;
+}
+
+.decoration-2 {
+  bottom: -50px;
+  right: -50px;
+}
+
+/* Question Container */
+.question-container {
+  max-width: 800px;
+  margin: 100px auto 0;
+  padding: 20px;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Option Cards */
+.options-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.option-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  cursor: pointer;
+  width: 300px;
+}
+
+.option-card:hover {
+  transform: scale(1.05);
+}
+
+.option-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.option-title {
+  margin: 0 0 10px 0;
+  color: #4a6bff;
+}
+
+.option-desc {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.question-box select,
+.question-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.question-box button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4a6bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.question-box button:hover {
+  background-color: #3a5bef;
+}
+
+.or-divider {
+  text-align: center;
+  margin: 15px 0;
+  color: #7f8c8d;
+  position: relative;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+  position: absolute;
+  top: 50%;
+  width: 45%;
+}
+
+.or-divider::before {
+  right: 55%;
+}
+
+.or-divider::after {
+  left: 55%;
+}
+
+.answer-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.answer-container h3 {
+  color: #2c3e50;
+  margin-top: 0;
+}

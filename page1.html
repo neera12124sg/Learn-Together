@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Help | LearnTogether</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="index.html" class="back-button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Back
+  </a>
+  <div class="decoration decoration-1">?</div>
+  <div class="decoration decoration-2">!</div>
+
+  <div class="question-container">
+    <h1>How Would You Like Help?</h1>
+    
+    <div class="options-container">
+      <div class="option-card ai" onclick="window.location.href='ai-help.html'">
+        <div class="option-icon">🤖</div>
+        <h3 class="option-title">Ask AI Assistant</h3>
+        <p class="option-desc">Get instant answers from our AI-powered knowledge base</p>
+      </div>
+      
+      <div class="option-card expert" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeYGuJc65wN6PwWT-6c5T3f7_hfr06EyaGxNMfVinEqE98-CQ/viewform?usp=sharing', '_blank')">
+        <div class="option-icon">👩‍🏫</div>
+        <h3 class="option-title">Ask an Expert</h3>
+        <p class="option-desc">Connect with subject matter experts for personalized help (Google sign-in required)</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
